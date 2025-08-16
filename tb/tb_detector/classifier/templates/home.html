@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>TB Detector</title></head>
+<body>
+  <h2>Upload Chest X-ray</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="image" id="fileInput" required>
+    <button type="submit">Upload</button>
+  </form>
+
+  {% if prediction %}
+    <h3>Prediction: {{ prediction }}</h3>
+    <h4>Confidence: {{ confidence|floatformat:2 }}%</h4>
+    <!-- Optional: debug probs -->
+    <!-- <pre>{{ probs }}</pre> -->
+    <script>document.getElementById("fileInput").value = "";</script>
+  {% endif %}
+</body>
+</html>
