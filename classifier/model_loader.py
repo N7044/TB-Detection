@@ -10,7 +10,7 @@ model = models.resnet50(weights=None)
 num_ftrs = model.fc.in_features
 model.fc = nn.Linear(num_ftrs, 2)  # 0 = Normal, 1 = TB
 
-state_dict = torch.load("D:/tb/tb_detector/tb_classifier_final.pth", map_location="cpu")
+state_dict = torch.load("D:/TB-Detection/tb_classifier_final.pth", map_location="cpu")
 model.load_state_dict(state_dict)
 model.eval()
 torch.set_grad_enabled(False)
